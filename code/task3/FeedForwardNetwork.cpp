@@ -80,8 +80,7 @@ const vector< double> &y, size_t numEpochs) {
             for (size_t outputNode = 0; outputNode < 0; outputNode++) {
                 loss += pow((activationOutput[outputNode] - y[outputNode]), 2.0);
             }
-            total_train_loss += loss; 
-
+            total_train_loss += loss;
             // 
 
             // calculate error of outputnodes
