@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 int reverseInt(int i)
 {
 	unsigned char ch1, ch2, ch3, ch4;
@@ -47,7 +46,7 @@ void loadMnistImages(const string& filename, vector< vector< double > > &images)
 				{
 					unsigned char pixel = 0;
 					file.read((char*)&pixel, sizeof(pixel));
-					// Add some scaling factor
+					// Normalize (((OldValue - OldMin) * NewRange) / OldRange) + NewMin
 					images[i][n_rows * r + c] = (double) pixel / 255; 
 				}
 			}

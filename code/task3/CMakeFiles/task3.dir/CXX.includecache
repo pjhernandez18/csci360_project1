@@ -19,10 +19,34 @@ ctime
 -
 cstdlib
 -
+cmath
+-
+math.h
+-
 
 /Users/Paul.Hernandez/Desktop/Project 1/code/task3/FeedForwardNetwork.h
 math.h
 -
 vector
 -
+
+/Users/Paul.Hernandez/Desktop/Project 1/code/task3/MNIST_reader.h
+math.h
+-
+fstream
+-
+iostream
+-
+vector
+-
+
+/Users/Paul.Hernandez/Desktop/Project 1/code/task3/main.cpp
+vector
+-
+iostream
+-
+MNIST_reader.h
+/Users/Paul.Hernandez/Desktop/Project 1/code/task3/MNIST_reader.h
+FeedForwardNetwork.h
+/Users/Paul.Hernandez/Desktop/Project 1/code/task3/FeedForwardNetwork.h
 
