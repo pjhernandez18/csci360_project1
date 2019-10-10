@@ -16,12 +16,22 @@ void FeedForwardNetwork::init(int seed) {
     for (size_t i = 0; i < inputLayerSize; i++) {
         hiddenLayerWeights[i].resize(hiddenLayerSize);
         for (size_t j = 0; j < hiddenLayerSize; j++) {
-            // initialized random weights from -0.5 to 0.5
             hiddenLayerWeights[i][j] = (double) ((rand() % 200) * 1.0 / 100) - 1.0;
            // cout << hiddenLayerWeights[i][j] << " ";
         }
         //cout << endl;
     }
+    // initialize weights for the second layer
+    // innerHiddenLayerWeights.resize(hiddenLayerSize);
+    // for (size_t i = 0; i < hiddenLayerSize; i++) {
+    //         innerHiddenLayerWeights[i].resize(hiddenLayerSize);
+    //      for (size_t j = 0; j < hiddenLayerSize; j++) {
+    //         innerHiddenLayerWeights[i][j] = (double) ((rand() % 200) * 1.0 / 100) - 1.0;
+    //         cout << innerHiddenLayerWeights[i][j] << " ";
+    //     }
+    //     cout << endl; 
+    // }
+
     outputLayerWeights.resize(hiddenLayerSize);
     for (size_t i = 0; i < hiddenLayerSize; i++) {
         outputLayerWeights[i].resize(outputLayerSize);
@@ -104,6 +114,7 @@ const vector< double> &y, double &total_train_samples, double &total_train_loss,
                 {
                     outputLayerWeights[hiddenNode][outputNode] += alpha * activationHidden[hiddenNode] * errorOfOutputNodes[outputNode];
                 }
+                
             }
            // update the weights of the hidden layer
            for (size_t inputNode = 0; inputNode < inputLayerSize; inputNode++){
@@ -207,9 +218,6 @@ const vector< double> &z, size_t numEpochs) {
         cout << "epoch = " << epoch << " Accuracy: " << train_accuracy << " " << val_accuracy 
         << " Loss: " << train_loss << " " << val_loss << endl;
 
-        // if (train_accuracy >= 90 || val_accuracy >= 90) {
-        //     break;
-        // }
    }
     
    return; 
