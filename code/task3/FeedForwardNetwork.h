@@ -38,4 +38,6 @@ class FeedForwardNetwork {
 
         inline double g(double x) {return 1.0/ (1.0 + exp(-x)); }
         inline double gprime(double y) {return y * (1-y); }
+
+        
 };

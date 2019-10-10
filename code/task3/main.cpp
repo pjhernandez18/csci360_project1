@@ -1,3 +1,7 @@
+//  Author by: Paul Hernandez
+//  CS 360
+//  Date: 10/4/2019
+
 #include <vector>
 #include <iostream>
 
@@ -12,31 +16,12 @@ int main()
 	//load MNIST images
 	vector <vector< double> > training_images_all;
 	loadMnistImages(filename, training_images_all);
-	cout << "Number of images: " << training_images_all.size() << endl;
-	cout << "Image size: " << training_images_all[0].size() << endl;
-
-	// for(size_t i = 0; i < training_images_all[0].size(); i++) {
-	// 	cout << training_images_all[0][i] << " ";
-	// }
-	// cout << endl; 
-	// return 0;
-
-	// Get first 6000 of training examples
-	// vector <vector< double> >::const_iterator first = training_images_all.begin();
-	// vector <vector< double> >::const_iterator last = training_images_all.begin() + 6000;
- 	// vector<vector<double> > training_images_set(first, last);
 
 	filename = "../MNIST/train-labels.idx1-ubyte";
 	//load MNIST labels
 	vector<double> training_labels_all;
 	loadMnistLabels(filename, training_labels_all);
-	cout << "Number of labels: " << training_labels_all.size() << endl;
-
-	// // Get first 6000 of training labels
-	// vector <double>::const_iterator beg = training_labels_all.begin();
-	// vector <double>::const_iterator end = training_labels_all.begin() + 6000;
- 	// vector<double> training_labels_set(beg, end);
-
+	
 	// Parition into training and validation sets
 	// training
 	vector<vector<double> > training_set(training_images_all.begin(), training_images_all.begin() + 4000);
@@ -46,6 +31,14 @@ int main()
 	vector<vector<double> > validation_set(training_images_all.begin() + 4000, training_images_all.begin() + 6000);
  	vector<double> validation_labels(training_labels_all.begin() + 4000, training_labels_all.begin() + 6000);
 
+	string fname = "../MNIST/t10k-labels.idx3-ubyte";
+	vector <vector< double> > test_images_all;
+	loadMnistImages(fname, test_images_all);
+
+	string lname = "../MNIST/t10k-labels.idx1-ubyte";
+	vector<double> test_labels_all;
+	loadMnistLabels(lname, test_labels_all);
+ 
 	//hyper parameters
 	double alpha = 0.1;   // learning rate
 	size_t inputLayerSize = 784;
@@ -60,5 +53,7 @@ int main()
 	nn.init(seed);
 	nn.train(training_set, training_labels, validation_set, validation_labels, numEpochs);
 
+	// Need a way to obtain optimum Epoch somehow and simulate using test data!
+	
 	return 0;
 }
