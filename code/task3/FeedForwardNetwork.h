@@ -28,6 +28,7 @@ class FeedForwardNetwork {
 
     private: 
         vector< vector< double > > hiddenLayerWeights;
+        vector< vector< double > > innerhiddenLayerWeights;
         vector< vector< double > > outputLayerWeights; 
 
         double alpha;
